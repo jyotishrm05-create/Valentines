@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For You ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffe6f0;
+      overflow: hidden;
+    }
+
+    .screen {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ccc;
+      position: absolute;
+    }
+
+    #messageScreen {
+      display: none;
+      background: #ffccd9;
+    }
+
+    #messageBox {
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 15px;
+      font-size: 26px;
+      color: #8b0030;
+      max-width: 700px;
+      line-height: 1.6;
+      z-index: 2;
+    }
+
+    .kiss {
+      position: absolute;
+      font-size: 26px;
+      animation: burst 1.6s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes burst {
+      from {
+        opacity: 1;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 0;
+        transform: scale(1.4) translateY(-40px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- QUESTION SCREEN -->
+  <div class="screen" id="questionScreen">
+    <div class="box">
+      <h2>Hey baby ❤️</h2>
+      <p>Will you be my Valentine’s? 🌹</p>
+      <button id="yes">YES</button>
+      <button id="no">NO</button>
+    </div>
+  </div>
+
+  <!-- MESSAGE SCREEN -->
+  <div class="screen" id="messageScreen">
+    <div id="messageBox">
+      You’re not just my Valentine.<br><br>
+      You’re my calm, my comfort, and my safe place.<br><br>
+      Thank you for being you. ❤️
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const questionScreen = document.getElementById("questionScreen");
+    const messageScreen = document.getElementById("messageScreen");
+
+    function moveNo() {
+      noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+      noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("mousedown", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+    function kissBurst() {
+      for (let i = 0; i < 20; i++) {
+        const kiss = document.createElement("div");
+        kiss.className = "kiss";
+        kiss.innerText = "💋";
+        kiss.style.left = Math.random() * window.innerWidth + "px";
+        kiss.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(kiss);
+        setTimeout(() => kiss.remove(), 1600);
+      }
+    }
+
+    yesBtn.onclick = () => {
+      questionScreen.style.display = "none";
+      messageScreen.style.display = "flex";
+
+      let count = 0;
+      const interval = setInterval(() => {
+        kissBurst();
+        count++;
+        if (count === 6) clearInterval(interval); // ~4 seconds
+      }, 600);
+    };
+  </script>
+
+</body>
+</html>
