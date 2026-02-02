@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Just for you ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      max-width: 520px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #ff4d6d;
+      color: white;
+      margin-top: 20px;
+    }
+
+    .text {
+      font-size: 20px;
+      color: #8b0030;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box" id="screen">
+    <button onclick="step1()">Click here ❤️</button>
+  </div>
+
+  <audio id="song" src="song.mp3"></audio>
+
+  <script>
+    const screen = document.getElementById("screen");
+
+    function step1() {
+      screen.innerHTML = `
+        <div class="text">
+          If you really love me,<br>
+          click here 💕
+        </div>
+        <button onclick="step2()">Click here</button>
+      `;
+    }
+
+    function step2() {
+      screen.innerHTML = `
+        <div class="text">
+          You mean everything to me.<br><br>
+          There is nothing in this world<br>
+          that can match my love for you.<br><br>
+          You are my comfort,<br>
+          my strength,<br>
+          and my home ❤️
+        </div>
+        <button onclick="step3()">Click here</button>
+      `;
+    }
+
+    function step3() {
+      screen.innerHTML = `
+        <div class="text">
+          If you want to know<br>
+          how much I love you…<br><br>
+          these few lines are<br>
+          dedicated only to you 💖
+        </div>
+        <button onclick="playSong()">Click here</button>
+      `;
+    }
+
+    function playSong() {
+      screen.innerHTML = `
+        <div class="text">
+          This is from my heart to yours 🎶❤️
+        </div>
+      `;
+      document.getElementById("song").play();
+    }
+  </script>
+
+</body>
+</html>
