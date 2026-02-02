@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Just for you ❤️</title>
 
   <style>
@@ -26,14 +26,14 @@
     }
 
     button {
-      padding: 12px 24px;
+      padding: 14px 26px;
       font-size: 18px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       background: #ff4d6d;
       color: white;
-      margin-top: 20px;
+      margin-top: 25px;
     }
 
     .text {
@@ -46,60 +46,64 @@
 
 <body>
 
-  <div class="box" id="screen">
-    <button onclick="step1()">Click here ❤️</button>
-  </div>
+<div class="box" id="screen">
+  <button onclick="step1()">Click ❤️</button>
+</div>
 
-  <audio id="song" src="song.mp3"></audio>
+<audio id="song" controls style="display:none;">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-  <script>
-    const screen = document.getElementById("screen");
+<script>
+  const screen = document.getElementById("screen");
+  const song = document.getElementById("song");
 
-    function step1() {
-      screen.innerHTML = `
-        <div class="text">
-          If you really love me,<br>
-          click here 💕
-        </div>
-        <button onclick="step2()">Click here</button>
-      `;
-    }
+  function step1() {
+    screen.innerHTML = `
+      <div class="text">
+        If you’re really here for me,<br>
+        take a second… and click ❤️
+      </div>
+      <button onclick="step2()">Click</button>
+    `;
+  }
 
-    function step2() {
-      screen.innerHTML = `
-        <div class="text">
-          You mean everything to me.<br><br>
-          There is nothing in this world<br>
-          that can match my love for you.<br><br>
-          You are my comfort,<br>
-          my strength,<br>
-          and my home ❤️
-        </div>
-        <button onclick="step3()">Click here</button>
-      `;
-    }
+  function step2() {
+    screen.innerHTML = `
+      <div class="text">
+        You’re not just someone I love.<br><br>
+        You’re the person I choose —<br>
+        on ordinary days,<br>
+        on tired days,<br>
+        and even from miles away.<br><br>
+        My heart feels safest with you.
+      </div>
+      <button onclick="step3()">Next</button>
+    `;
+  }
 
-    function step3() {
-      screen.innerHTML = `
-        <div class="text">
-          If you want to know<br>
-          how much I love you…<br><br>
-          these few lines are<br>
-          dedicated only to you 💖
-        </div>
-        <button onclick="playSong()">Click here</button>
-      `;
-    }
+  function step3() {
+    screen.innerHTML = `
+      <div class="text">
+        I can’t show you everything in words.<br><br>
+        So I did this instead…<br>
+        something only for you.
+      </div>
+      <button onclick="playSong()">Tap to hear my voice 🎶</button>
+    `;
+  }
 
-    function playSong() {
-      screen.innerHTML = `
-        <div class="text">
-          This is from my heart to yours 🎶❤️
-        </div>
-      `;
-      document.getElementById("song").play();
-    }
-  </script>
+  function playSong() {
+    screen.innerHTML = `
+      <div class="text">
+        This is my voice,<br>
+        and every word is meant for you ❤️
+      </div>
+    `;
+    song.style.display = "block";
+    song.play();
+  }
+</script>
 
 </body>
 </html>
